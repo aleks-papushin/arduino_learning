@@ -1,0 +1,33 @@
+#define LED_PIN 9
+#define DOT 100
+#define DASH DOT*3
+#define PAUSE DOT // pause between parts of the same letter
+#define LETTER_PAUSE DOT*3 // pause between letters
+#define WORD_PAUSE DOT*7 // pause between words
+
+#define SIGN_LEN 3
+
+char ABC[] = {'s', 'o'};
+int MORSE_ABC[][3] = {{DOT, DOT, DOT}, {DASH, DASH, DASH}};
+
+void setup() {
+  pinMode(LED_PIN, OUTPUT);
+}
+
+void loop() {
+  morseLetter(0);
+  morseLetter(1);
+  morseLetter(0);  
+  delay(WORD_PAUSE);
+}
+
+void morseLetter(int letterPlace) {
+  for (int i = 0; i < 3; i++) {
+    digitalWrite(LED_PIN, 1);
+    delay(MORSE_ABC[letterPlace][i]);
+    digitalWrite(LED_PIN, 0);
+    delay(PAUSE);        
+  }
+  delay(LETTER_PAUSE);
+}
+
