@@ -1,6 +1,5 @@
 #!/usr/bin/python
 
-output_file = open("notes", "w")
-data = open("ToneKeyboard.txt").read()
-output_file.write(data.replace("NOTE_", ""))
-output_file.close()
+with open('tones.txt') as oldfile, open('tones_wtht_sharps.txt', 'w') as newfile:
+    for line in oldfile:
+        newfile.write(line.replace('NOTE_', ''))
